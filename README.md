@@ -14,7 +14,7 @@ Add this line to your application's Gemfile:
 gem 'command_line', '~> 0.1.0'
 ```
 
-If you want `command_line` available everywhere you can add this line to your application's Gemfile:
+If you want `command_line` available globally you can add this line to your application's Gemfile:
 
 ```ruby
 gem 'command_line', '~> 0.1.0', require: 'command_line/global'
@@ -24,6 +24,12 @@ Or manually install it yourself with:
 
 ```sh
 $ gem install command_line
+```
+
+In a script you can make `command_line` available globally with:
+
+```ruby
+require 'command_line/global'
 ```
 
 ## Usage
