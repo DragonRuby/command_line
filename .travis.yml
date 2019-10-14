@@ -1,4 +1,6 @@
 language: ruby
+before_install: # for bundler 2.0+
+  - gem install bundler
 script: bundle exec rake $RAKE_TASK
 matrix:
   include:
