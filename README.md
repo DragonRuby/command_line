@@ -4,6 +4,8 @@ CommandLine provides an easier way to run command-line applications.
 It captures all outputs, can handle applications that require stdin, and can pass environment variables.
 It's also helpful for testing commmand-line applications.
 
+This project is tested against and works on Linux, OS X, and Windows.
+
 ## Installation
 
 This project uses [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
