@@ -19,13 +19,3 @@ matrix:
     - os: osx
       rvm: 2.4
       env: RAKE_TASK=spec
-    # Windows - Tests
-    - os: windows
-      rvm: 2.6
-      env: RAKE_TASK=spec
-    - os: windows
-      rvm: 2.5
-      env: RAKE_TASK=spec
-    - os: windows
-      rvm: 2.4
-      env: RAKE_TASK=spec
