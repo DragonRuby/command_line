@@ -6,9 +6,31 @@ RSpec.shared_examples_for 'command_line' do |method|
     expect(result.stdout).to eql 'out'
   end
 
+  it 'captures massive stdout without hanging' do
+    result = method.call('ruby', 'spec/fixtures/massive_stdout.rb')
+    expect(result.stdout).to start_with 'out'
+  end
+
   it 'captures stderr' do
     result = method.call('ruby', 'spec/fixtures/stderr.rb')
     expect(result.stderr).to eql 'err'
+  end
+
+  it 'captures massive stderr without hanging' do
+    result = method.call('ruby', 'spec/fixtures/massive_stderr.rb')
+    expect(result.stderr).to start_with 'err'
+  end
+
+  it 'captures both stdout and stderr' do
+    result = method.call('ruby', 'spec/fixtures/stdout_and_stderr.rb')
+    expect(result.stdout).to eql 'out'
+    expect(result.stderr).to eql 'err'
+  end
+
+  it 'captures both massive stdout and massive stderr' do
+    result = method.call('ruby', 'spec/fixtures/massive_stdout_and_stderr.rb')
+    expect(result.stdout).to start_with 'out'
+    expect(result.stderr).to start_with 'err'
   end
 
   it 'captures the exit status' do

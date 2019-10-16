@@ -44,8 +44,10 @@ module CommandLine
     Open3.popen3(env, command, *args) do |i, o, e, wait_thr|
       yield i if block_given?
 
-      stdout = o.read
-      stderr = e.read
+      [
+        Thread.new { stdout = o.read },
+        Thread.new { stderr = e.read }
+      ].each(&:join)
       status = wait_thr.value
     end
 
