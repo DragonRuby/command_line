@@ -13,13 +13,13 @@ This project uses [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'command_line', '~> 1.0.0'
+gem 'command_line', '~> 1.0'
 ```
 
 If you want `command_line` available globally you can add this line to your application's Gemfile:
 
 ```ruby
-gem 'command_line', '~> 1.0.0', require: 'command_line/global'
+gem 'command_line', '~> 1.0', require: 'command_line/global'
 ```
 
 Or manually install it yourself with:
