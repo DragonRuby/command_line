@@ -70,7 +70,15 @@ end
 Environment variables can be passed after the command and arguments are passed.
 
 ```ruby
-command_line('some_webserver', { 'PORT' => '80' })
+command_line('some_webserver', env: { 'PORT' => '80' })
+```
+
+If you're concerned about the command running too long you can set a `:timeout`.
+Exceeding the timeout will cause a `CommandLine::TimeoutError` to be raised.
+
+```ruby
+>> command_line('sleep', '5', timeout: 2)
+CommandLine::TimeoutError (execution expired)
 ```
 
 You can use `command_line!` if you want to raise an error on an exit failure.

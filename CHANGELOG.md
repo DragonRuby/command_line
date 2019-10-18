@@ -3,6 +3,7 @@
 ## Added
 
 - CommandLine.command_line!
+- Added a `:timeout` argument for setting a timeout.
 
 # [1.0.1] (2019-08-16)
 

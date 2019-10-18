@@ -11,6 +11,9 @@ require 'command_line'
 # @param [Hash] env: Pass environment variables to use. The key should
 #   be a String representing the environment variable name. The value
 #   is the value you want that variable to have.
+# @param [Integer, Float, nil] Number of seconds to wait for the block to
+#   terminate. Floats can be used to specify fractional seconds. A value of 0
+#   or nil will execute the block without any timeout.
 #
 # @yield [stdin] Handle any input on stdin that the command needs.
 # @yieldparam stdin [IO]
@@ -25,7 +28,7 @@ require 'command_line'
 #   end
 #
 # @example
-#   command_line('some_webserver', { 'PORT' => '80' })
+#   command_line('some_webserver', env: { 'PORT' => '80' })
 #
 # @return [Result]
 def command_line(*args, &block)
@@ -35,14 +38,7 @@ end
 # Same as CommandLine.command_line except that a failure on exit raises an
 # error.
 #
-# @param command [String] the command to run
-# @param args [Array<String>] any arguments passed to the command
-# @param [Hash] env: Pass environment variables to use. The key should
-#   be a String representing the environment variable name. The value
-#   is the value you want that variable to have.
-#
-# @yield [stdin] Handle any input on stdin that the command needs.
-# @yieldparam stdin [IO]
+# @see CommandLine.command_line
 #
 # @example
 #   command_line!('echo', 'hello')

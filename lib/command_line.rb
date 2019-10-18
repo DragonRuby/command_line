@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'open3'
+require 'timeout'
 
 require 'command_line/result'
 require 'command_line/version'
@@ -16,6 +17,9 @@ module CommandLine
   # Raised if CommandLine#command_line! is called an has an exit failure.
   class ExitFailureError < Error; end
 
+  # Raised if a timeout is given and exceeded.
+  class TimeoutError < Error; end
+
   module_function
 
   # Run a command and get back the result.
@@ -25,6 +29,9 @@ module CommandLine
   # @param [Hash] env: Pass environment variables to use. The key should
   #   be a String representing the environment variable name. The value
   #   is the value you want that variable to have.
+  # @param [Integer, Float, nil] Number of seconds to wait for the block to
+  #   terminate. Floats can be used to specify fractional seconds. A value of 0
+  #   or nil will execute the block without any timeout.
   #
   # @yield [stdin] Handle any input on stdin that the command needs.
   # @yieldparam stdin [IO]
@@ -39,38 +46,34 @@ module CommandLine
   #   end
   #
   # @example
-  #   command_line('some_webserver', { 'PORT' => '80' })
+  #   command_line('some_webserver', env: { 'PORT' => '80' })
   #
   # @return [Result]
-  def command_line(command, *args, env: {})
+  def command_line(command, *args, env: {}, timeout: nil)
     stdout = ''
     stderr = ''
     status = nil
 
     Open3.popen3(env, command, *args) do |i, o, e, wait_thr|
-      yield i if block_given?
+      Timeout.timeout(timeout, TimeoutError) do
+        yield i if block_given?
 
-      [
-        Thread.new { stdout = o.read },
-        Thread.new { stderr = e.read }
-      ].each(&:join)
-      status = wait_thr.value
+        # If we timeout Ruby warns with an IOError that the streams were closed
+        # in another thread.
+        [
+          Thread.new { stdout = o.read rescue IOError },
+          Thread.new { stderr = e.read rescue IOError }
+        ].each(&:join)
+        status = wait_thr.value
+      end
     end
-
     Result.new(stdout, stderr, status)
   end
 
   # Same as CommandLine.command_line except that a failure on exit raises an
   # error.
   #
-  # @param command [String] the command to run
-  # @param args [Array<String>] any arguments passed to the command
-  # @param [Hash] env: Pass environment variables to use. The key should
-  #   be a String representing the environment variable name. The value
-  #   is the value you want that variable to have.
-  #
-  # @yield [stdin] Handle any input on stdin that the command needs.
-  # @yieldparam stdin [IO]
+  # @see CommandLine.command_line
   #
   # @example
   #   command_line!('echo', 'hello')
