@@ -77,7 +77,7 @@ If you're concerned about the command running too long you can set a `:timeout`.
 Exceeding the timeout will cause a `CommandLine::TimeoutError` to be raised.
 
 ```ruby
->> command_line('sleep', '5', timeout: 2)
+>> command_line('sleep', 5, timeout: 2)
 CommandLine::TimeoutError (execution expired)
 ```
 

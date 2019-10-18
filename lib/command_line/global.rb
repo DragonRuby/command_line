@@ -6,8 +6,9 @@ require 'command_line'
 
 # Run a command and get back the result.
 #
-# @param command [String] the command to run
-# @param args [Array<String>] any arguments passed to the command
+# @param command [String] The command to run.
+# @param args [Array] Any arguments passed to the command. All arguments will
+#   be converted to strings using `to_s`.
 # @param [Hash] env: Pass environment variables to use. The key should
 #   be a String representing the environment variable name. The value
 #   is the value you want that variable to have.

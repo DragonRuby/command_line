@@ -4,6 +4,7 @@
 
 - CommandLine.command_line!
 - Added a `:timeout` argument for setting a timeout.
+- Allow more than strings as arguments to pass to the command. We'll convert everything with `to_s`.
 
 # [1.0.1] (2019-08-16)
 

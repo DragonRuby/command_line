@@ -24,8 +24,9 @@ module CommandLine
 
   # Run a command and get back the result.
   #
-  # @param command [String] the command to run
-  # @param args [Array<String>] any arguments passed to the command
+  # @param command [String] The command to run.
+  # @param args [Array] Any arguments passed to the command. All arguments will
+  #   be converted to strings using `to_s`.
   # @param [Hash] env: Pass environment variables to use. The key should
   #   be a String representing the environment variable name. The value
   #   is the value you want that variable to have.
@@ -54,7 +55,7 @@ module CommandLine
     stderr = ''
     status = nil
 
-    Open3.popen3(env, command, *args) do |i, o, e, wait_thr|
+    Open3.popen3(env, command.to_str, *args.map(&:to_s)) do |i, o, e, wait_thr|
       Timeout.timeout(timeout, TimeoutError) do
         yield i if block_given?
 

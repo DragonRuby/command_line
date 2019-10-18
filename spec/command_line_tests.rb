@@ -78,7 +78,7 @@ RSpec.shared_examples_for 'command_line' do |method|
     context 'is nil' do
       it 'does not time out' do
         expect(
-          method.call('ruby', 'spec/fixtures/sleep.rb', '2', timeout: nil)
+          method.call('ruby', 'spec/fixtures/sleep.rb', 2, timeout: nil)
         ).to be_success
       end
     end
@@ -86,7 +86,7 @@ RSpec.shared_examples_for 'command_line' do |method|
     context 'is 0' do
       it 'does not time out' do
         expect(
-          method.call('ruby', 'spec/fixtures/sleep.rb', '2', timeout: 0)
+          method.call('ruby', 'spec/fixtures/sleep.rb', 2, timeout: 0)
         ).to be_success
       end
     end
@@ -94,13 +94,13 @@ RSpec.shared_examples_for 'command_line' do |method|
     context 'is 3' do
       it 'does not time out if timeout is > 3' do
         expect(
-          method.call('ruby', 'spec/fixtures/sleep.rb', '3', timeout: 4)
+          method.call('ruby', 'spec/fixtures/sleep.rb', 3, timeout: 4)
         ).to be_success
       end
 
       it 'does t time out if timeout is < 3' do
         expect do
-          method.call('ruby', 'spec/fixtures/sleep.rb', '3', timeout: 2)
+          method.call('ruby', 'spec/fixtures/sleep.rb', 3, timeout: 2)
         end.to raise_error(CommandLine::TimeoutError, 'execution expired')
       end
     end
