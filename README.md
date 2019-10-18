@@ -73,6 +73,14 @@ Environment variables can be passed after the command and arguments are passed.
 command_line('some_webserver', { 'PORT' => '80' })
 ```
 
+You can use `command_line!` if you want to raise an error on an exit failure.
+The contents of `stderr` will be the error message.
+
+```ruby
+>> command_line!('grep')
+CommandLine::ExitFailureError (usage: grep [-abc....
+```
+
 ### RSpec
 
 To have direct access to `CommandLine.command_line` you can include it in `spec/spec_helper.rb`.

@@ -2,6 +2,8 @@
 
 ## Added
 
+- CommandLine.command_line!
+
 # [1.0.1] (2019-08-16)
 
 ## Fixed

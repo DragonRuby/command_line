@@ -45,7 +45,7 @@ module CommandLine
     #   command_line('grep').exitstatus
     #   # => 2
     #
-    # @return [Integer,nil]
+    # @return [Integer, nil]
     def exitstatus
       @status.exitstatus
     end

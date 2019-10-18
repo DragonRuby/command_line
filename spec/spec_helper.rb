@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 require 'command_line'
-require 'tests'
+require 'command_line_tests'
+require 'command_line_bang_tests'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

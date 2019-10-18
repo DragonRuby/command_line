@@ -31,3 +31,29 @@ require 'command_line'
 def command_line(*args, &block)
   CommandLine.command_line(*args, &block)
 end
+
+# Same as CommandLine.command_line except that a failure on exit raises an
+# error.
+#
+# @param command [String] the command to run
+# @param args [Array<String>] any arguments passed to the command
+# @param [Hash] env: Pass environment variables to use. The key should
+#   be a String representing the environment variable name. The value
+#   is the value you want that variable to have.
+#
+# @yield [stdin] Handle any input on stdin that the command needs.
+# @yieldparam stdin [IO]
+#
+# @example
+#   command_line!('echo', 'hello')
+#
+# @example
+#   command_line!('grep')
+#   # => CommandLine::ExitFailureError (usage: grep ...
+#
+# @return [Result]
+# @raise [CommandLine::ExitFailureError] If the application exits with an
+#   error status. The message will be the contents of Result#stderr.
+def command_line!(*args, &block)
+  CommandLine.command_line!(*args, &block)
+end
