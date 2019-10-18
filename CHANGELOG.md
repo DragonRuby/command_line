@@ -1,3 +1,7 @@
+# [1.1.0] (TBD)
+
+## Added
+
 # [1.0.1] (2019-08-16)
 
 ## Fixed
@@ -8,4 +12,5 @@
 
 Initial release.
 
+[1.1.0]: https://github.com/DragonRuby/command_line/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/DragonRuby/command_line/compare/v1.0.0...v1.0.1
