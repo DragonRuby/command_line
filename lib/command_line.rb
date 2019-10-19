@@ -56,18 +56,24 @@ module CommandLine
     status = nil
 
     Open3.popen3(env, command.to_str, *args.map(&:to_s)) do |i, o, e, wait_thr|
-      Timeout.timeout(timeout, TimeoutError) do
-        yield i if block_given?
+      begin
+        threads = []
 
-        # If we timeout Ruby warns with an IOError that the streams were closed
-        # in another thread.
-        [
-          Thread.new { stdout = o.read rescue IOError },
-          Thread.new { stderr = e.read rescue IOError }
-        ].each(&:join)
-        status = wait_thr.value
+        Timeout.timeout(timeout, TimeoutError) do
+          yield i if block_given?
+
+          threads << Thread.new { stdout = o.read }
+          threads << Thread.new { stderr = e.read }
+          threads.each(&:join)
+          status = wait_thr.value
+        end
+      rescue TimeoutError => e
+        threads.map(&:kill)
+
+        raise e
       end
     end
+
     Result.new(stdout, stderr, status)
   end
 

@@ -13,6 +13,8 @@ Layout/IndentFirstHashElement:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+Metrics/AbcSize:
+  Enabled: false
 Metrics/MethodLength:
   Enabled: false
 Style/RescueModifier:
