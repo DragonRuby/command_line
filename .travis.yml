@@ -6,12 +6,17 @@ matrix:
   include:
     # Linux - Tests and Linting
     - os: linux
+      rvm: 2.7
+    - os: linux
       rvm: 2.6
     - os: linux
       rvm: 2.5
     - os: linux
       rvm: 2.4
     # OS X - Tests
+    - os: osx
+      rvm: 2.7
+      env: RAKE_TASK=spec
     - os: osx
       rvm: 2.6
       env: RAKE_TASK=spec
