@@ -1,5 +1,9 @@
 # [2.0.0] (TBD)
 
+## Changed
+
+- Arguments are now always sent as a single command to `Open3.popen3`. Sending as multiple arguments can cause it to not use the shell. Passing as a single argument ensures the shell is always used.
+
 ## Fixed
 
 - Deprecation warning about keyword arguments.

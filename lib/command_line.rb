@@ -55,7 +55,8 @@ module CommandLine
     stderr = ''
     status = nil
 
-    Open3.popen3(env, command.to_str, *args.map(&:to_s)) do |i, o, e, wait_thr|
+    full_command = [command, *args].map(&:to_s).join(' ')
+    Open3.popen3(env, full_command) do |i, o, e, wait_thr|
       begin
         threads = []
 
