@@ -1,5 +1,9 @@
 # [2.0.0] (TBD)
 
+## Fixed
+
+- Deprecation warning about keyword arguments.
+
 # [1.1.0] (2019-10-23)
 
 ## Added

@@ -32,8 +32,8 @@ require 'command_line'
 #   command_line('some_webserver', env: { 'PORT' => '80' })
 #
 # @return [Result]
-def command_line(*args, &block)
-  CommandLine.command_line(*args, &block)
+def command_line(*args, **kwargs, &block)
+  CommandLine.command_line(*args, **kwargs, &block)
 end
 
 # Same as CommandLine.command_line except that a failure on exit raises an
@@ -51,6 +51,6 @@ end
 # @return [Result]
 # @raise [CommandLine::ExitFailureError] If the application exits with an
 #   error status. The message will be the contents of Result#stderr.
-def command_line!(*args, &block)
-  CommandLine.command_line!(*args, &block)
+def command_line!(*args, **kwargs, &block)
+  CommandLine.command_line!(*args, **kwargs, &block)
 end
