@@ -1,6 +1,4 @@
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'command_line/version'
+require_relative 'lib/command_line/version'
 
 Gem::Specification.new do |spec|
   spec.name    = 'command_line'
@@ -29,8 +27,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'bundler', '~> 2.0'
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.9'
-  spec.add_development_dependency 'rubocop', '~> 0.75.0'
+  spec.add_development_dependency 'rubocop', '~> 0.81.0'
   spec.add_development_dependency 'yard', '~> 0.9.20'
 end

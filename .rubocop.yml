@@ -6,9 +6,9 @@ AllCops:
   - Rakefile
   - spec/fixtures/**/*
   - bin/**/*
-Layout/AlignArguments:
+Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 Metrics/BlockLength:
   Exclude:
