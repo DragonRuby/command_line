@@ -1,4 +1,6 @@
-require_relative 'lib/command_line/version'
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'command_line/version'
 
 Gem::Specification.new do |spec|
   spec.name    = 'command_line'
