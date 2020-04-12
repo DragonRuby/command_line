@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.shared_examples_for 'command_line' do |method|
+  it 'runs the command and arguments as a single call' do
+    Bundler.with_unbundled_env do
+      result = command_line('bundle exec rake', '-T')
+      expect(result.stdout).to_not be_empty
+    end
+  end
+
   it 'captures stdout' do
     result = method.call('ruby', 'spec/fixtures/stdout.rb')
     expect(result.stdout).to eql 'out'
