@@ -27,9 +27,9 @@ module CommandLine
   # @param command [String] The command to run.
   # @param args [Array] Any arguments passed to the command. All arguments will
   #   be converted to strings using `to_s`.
-  # @param [Hash] env: Pass environment variables to use. The key should
-  #   be a String representing the environment variable name. The value
-  #   is the value you want that variable to have.
+  # @param [Hash] env: Pass environment variables to use. The key is the name
+  #   of the environment variable. The value is the value you want that variable
+  #   to have.
   # @param [Integer, Float, nil] Number of seconds to wait for the block to
   #   terminate. Floats can be used to specify fractional seconds. A value of 0
   #   or nil will execute the block without any timeout.
@@ -47,7 +47,7 @@ module CommandLine
   #   end
   #
   # @example
-  #   command_line('some_webserver', env: { 'PORT' => '80' })
+  #   command_line('some_webserver', env: { PORT: '80' })
   #
   # @return [Result]
   def command_line(command, *args, env: {}, timeout: nil)
@@ -56,7 +56,8 @@ module CommandLine
     status = nil
 
     full_command = [command, *args].map(&:to_s).join(' ')
-    Open3.popen3(env, full_command) do |i, o, e, wait_thr|
+    environment = env.transform_keys(&:to_s)
+    Open3.popen3(environment, full_command) do |i, o, e, wait_thr|
       threads = []
 
       Timeout.timeout(timeout, TimeoutError) do

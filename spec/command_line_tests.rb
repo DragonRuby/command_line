@@ -79,6 +79,16 @@ RSpec.shared_examples_for 'command_line' do |method|
         }).stdout
       ).to eql "#{echo}\n"
     end
+
+    it 'converts the ENV variables to strings' do
+      echo = 'hi'
+
+      expect(
+        method.call('ruby', 'spec/fixtures/echo_env.rb', env: {
+          ECHO: echo
+        }).stdout
+      ).to eql "#{echo}\n"
+    end
   end
 
   context 'with :timeout' do

@@ -74,7 +74,7 @@ end
 Environment variables can be passed after the command and arguments are passed.
 
 ```ruby
-command_line('some_webserver', env: { 'PORT' => '80' })
+command_line('some_webserver', env: { PORT: '80' })
 ```
 
 If you're concerned about the command running too long you can set a `:timeout`.

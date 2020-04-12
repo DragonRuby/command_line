@@ -5,6 +5,10 @@
 - Arguments are now always sent as a single command to `Open3.popen3`. Sending as multiple arguments can cause it to not use the shell. Passing as a single argument ensures the shell is always used.
 - Drop support for Ruby 2.4.
 
+## Added
+
+- The `:env` flag now accepts non-string keys and will convert them to strings.
+
 ## Fixed
 
 - Deprecation warning about keyword arguments.

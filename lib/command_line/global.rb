@@ -9,9 +9,9 @@ require 'command_line'
 # @param command [String] The command to run.
 # @param args [Array] Any arguments passed to the command. All arguments will
 #   be converted to strings using `to_s`.
-# @param [Hash] env: Pass environment variables to use. The key should
-#   be a String representing the environment variable name. The value
-#   is the value you want that variable to have.
+# @param [Hash] env: Pass environment variables to use. The key is the name
+#   of the environment variable. The value is the value you want that variable
+#   to have.
 # @param [Integer, Float, nil] Number of seconds to wait for the block to
 #   terminate. Floats can be used to specify fractional seconds. A value of 0
 #   or nil will execute the block without any timeout.
@@ -29,7 +29,7 @@ require 'command_line'
 #   end
 #
 # @example
-#   command_line('some_webserver', env: { 'PORT' => '80' })
+#   command_line('some_webserver', env: { PORT: '80' })
 #
 # @return [Result]
 def command_line(*args, **kwargs, &block)
