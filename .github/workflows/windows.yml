@@ -1,0 +1,22 @@
+name: Windows
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        ruby: [2.7, 2.6, 2.5]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby ${{ matrix.ruby }}
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - name: Build
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+    - name: Test
+      run: bundle exec rake
