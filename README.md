@@ -1,8 +1,9 @@
 # CommandLine
 
 [![Version](https://img.shields.io/gem/v/command_line.svg?style=flat-square)](https://rubygems.org/gems/command_line)
-[![Linux and OS X Build](https://img.shields.io/travis/com/DragonRuby/command_line?label=Linux%20and%20OS%20X&style=flat-square)](https://travis-ci.com/DragonRuby/command_line)
-[![Windows Build](https://img.shields.io/appveyor/ci/AaronLasseigne/command-line?label=Windows&style=flat-square)](https://ci.appveyor.com/project/AaronLasseigne/command-line)
+[![Linux Build](https://img.shields.io/github/workflow/status/DragonRuby/command_line/Linux?label=Linux&style=flat-square)](https://github.com/DragonRuby/command_line/actions?query=workflow%3ALinux)
+[![MacOS Build](https://img.shields.io/github/workflow/status/DragonRuby/command_line/MacOS?label=MacOS&style=flat-square)](https://github.com/DragonRuby/command_line/actions?query=workflow%3AMacOS)
+[![Windows Build](https://img.shields.io/github/workflow/status/DragonRuby/command_line/Windows?label=Windows&style=flat-square)](https://github.com/DragonRuby/command_line/actions?query=workflow%3AWindows)
 
 CommandLine provides an easier way to run command-line applications.
 It captures all outputs, can handle applications that require stdin, and can pass environment variables.
