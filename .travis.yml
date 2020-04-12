@@ -11,8 +11,6 @@ matrix:
       rvm: 2.6
     - os: linux
       rvm: 2.5
-    - os: linux
-      rvm: 2.4
     # OS X - Tests
     - os: osx
       rvm: 2.7
@@ -22,7 +20,4 @@ matrix:
       env: RAKE_TASK=spec
     - os: osx
       rvm: 2.5
-      env: RAKE_TASK=spec
-    - os: osx
-      rvm: 2.4
       env: RAKE_TASK=spec

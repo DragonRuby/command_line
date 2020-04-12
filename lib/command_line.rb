@@ -57,22 +57,20 @@ module CommandLine
 
     full_command = [command, *args].map(&:to_s).join(' ')
     Open3.popen3(env, full_command) do |i, o, e, wait_thr|
-      begin
-        threads = []
+      threads = []
 
-        Timeout.timeout(timeout, TimeoutError) do
-          yield i if block_given?
+      Timeout.timeout(timeout, TimeoutError) do
+        yield i if block_given?
 
-          threads << Thread.new { stdout = o.read }
-          threads << Thread.new { stderr = e.read }
-          threads.each(&:join)
-          status = wait_thr.value
-        end
-      rescue TimeoutError => e
-        threads.map(&:kill)
-
-        raise e
+        threads << Thread.new { stdout = o.read }
+        threads << Thread.new { stderr = e.read }
+        threads.each(&:join)
+        status = wait_thr.value
       end
+    rescue TimeoutError => e
+      threads.map(&:kill)
+
+      raise e
     end
 
     Result.new(stdout, stderr, status)
