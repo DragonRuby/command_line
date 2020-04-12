@@ -31,4 +31,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.9'
   spec.add_development_dependency 'rubocop', '~> 0.81.0'
   spec.add_development_dependency 'yard', '~> 0.9.20'
+  spec.add_development_dependency 'redcarpet', '~> 3.5.0'
 end

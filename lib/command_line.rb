@@ -77,7 +77,7 @@ module CommandLine
     Result.new(stdout, stderr, status)
   end
 
-  # Same as CommandLine.command_line except that a failure on exit raises an
+  # Same as {CommandLine.command_line} except that a failure on exit raises an
   # error.
   #
   # @see CommandLine.command_line

@@ -1,0 +1,6 @@
+--markup markdown
+--markup-provider redcarpet
+--readme README.md
+-
+CHANGELOG.md
+LICENSE.txt

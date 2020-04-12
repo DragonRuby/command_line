@@ -27,7 +27,7 @@ module CommandLine
     # @return [String]
     attr_reader :stderr
 
-    # Returns true if the application exited normally.
+    # Returns `true` if the application exited normally.
     #
     # @example
     #   command_line('grep').exited?
@@ -50,7 +50,7 @@ module CommandLine
       @status.exitstatus
     end
 
-    # Returns true if the command exited normally with a success status.
+    # Returns `true` if the command exited normally with a success status.
     #
     # @example
     #   command_line('echo', 'hi').success?
@@ -61,7 +61,7 @@ module CommandLine
       !@status.nil? && @status.success?
     end
 
-    # Returns true if the command failed to exit normally or exited with a
+    # Returns `true` if the command failed to exit normally or exited with a
     # failing status.
     #
     # @example
