@@ -92,8 +92,8 @@ module CommandLine
   # @return [Result]
   # @raise [CommandLine::ExitFailureError] If the application exits with an
   #   error status. The message will be the contents of Result#stderr.
-  def command_line!(*args, &block)
-    command_line(*args, &block).tap do |result|
+  def command_line!(*args, **kwargs, &block)
+    command_line(*args, **kwargs, &block).tap do |result|
       raise ExitFailureError, result.stderr if result.failure?
     end
   end

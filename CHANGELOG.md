@@ -1,3 +1,9 @@
+# [2.0.1] (2020-04-17)
+
+## Fixed
+
+- Deprecation warning about keyword arguments.
+
 # [2.0.0] (2020-04-13)
 
 ## Changed
@@ -31,6 +37,7 @@
 
 Initial release.
 
+[2.0.1]: https://github.com/DragonRuby/command_line/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/DragonRuby/command_line/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/DragonRuby/command_line/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/DragonRuby/command_line/compare/v1.0.0...v1.0.1
