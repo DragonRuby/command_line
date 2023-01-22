@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'bundler'
 require 'command_line'
 require 'command_line_tests'
 require 'command_line_bang_tests'
