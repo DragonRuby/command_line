@@ -1,7 +1,7 @@
 # CommandLine
 
 [![Version](https://img.shields.io/gem/v/command_line.svg?style=flat-square)](https://rubygems.org/gems/command_line)
-[![Test](https://img.shields.io/github/workflow/status/DragonRuby/command_line/Test?label=Test&style=flat-square)](https://github.com/DragonRuby/command_line/actions?query=workflow%3ATest)
+[![Test](https://img.shields.io/github/actions/workflow/status/DragonRuby/command_line/test.yml?label=Test&style=flat-square&branch=master)](https://github.com/DragonRuby/command_line/actions?query=workflow%3ATest)
 
 CommandLine provides an easier way to run command-line applications.
 It captures all outputs, can handle applications that require stdin, and can pass environment variables.
